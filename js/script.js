@@ -1,8 +1,16 @@
 const tabs = document.querySelectorAll('.tab');
 const panels = document.querySelectorAll('.panel');
+const btn = document.getElementById('menu-btn')
+const menu = document.getElementById('menu')
+const logo = document.getElementById('logo')
+
+
 
 // Tabs menu event listener
-tabs.forEach((tab) => tab.addEventListener('click', onTabClick))
+tabs.forEach((tab) => tab.addEventListener('click', onTabClick));
+
+// Menu button event listener
+btn.addEventListener('click', onMenuClick)
 
 function onTabClick(e){
     // Deactivate all tabs
@@ -25,4 +33,14 @@ function onTabClick(e){
     document.getElementById('panels').getElementsByClassName(classString)[0].classList.remove('hidden')
 }
 
+function onMenuClick(e){
+    btn.classList.toggle('open')
+    menu.classList.toggle('flex')
+    menu.classList.toggle('hidden')
 
+    if(menu.classList.contains('flex')){
+        logo.setAttribute('src', './assets/images/logo-bookmark.svg')
+    }else {
+        logo.setAttribute('src', './assets/images/logo-bookmark-footer.svg')
+    }
+}
